@@ -1,0 +1,83 @@
+<div class="container">
+  <form [formGroup]="purchaseForm" (ngSubmit)="submitPurchase()">
+    <div >
+      <h1>DATOS DE LA COMPRA</h1>
+    </div>
+    <div class="col">
+      <div class="row">
+        <mat-form-field class="col" appearance="standard">
+          <mat-label>Tipo de Documento</mat-label>
+          <mat-select formControlName="invoiceType">
+            <mat-option value="1">FACTURA</mat-option>
+            <mat-option value="6">BOLETA</mat-option>
+            <mat-option value="9">OTRO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col" appearance="standard">
+          <mat-label>Número de comprobante</mat-label>
+          <input style="text-transform:uppercase" matInput formControlName="invoiceSerie">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col" appearance="fill">
+          <mat-label>Emisión</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="deliverDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="col" appearance="fill">
+          <mat-label>Vencimiento</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="expireDate">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="standard">
+          <mat-label>Proveedor</mat-label>
+          <textarea matInput formControlName="supplierDOI"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col" appearance="standard">
+          <mat-label>Moneda</mat-label>
+          <mat-select formControlName="currency">
+            <mat-option value="PEN">SOLES</mat-option>
+            <mat-option value="USD">DOLAR</mat-option>
+            <mat-option value="EUR">EURO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col" appearance="standard">
+          <mat-label>Monto Total</mat-label>
+          <input type="number" matInput formControlName="amount">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col" appearance="standard">
+          <mat-label>Tipo de Pago</mat-label>
+          <mat-select formControlName="paymentType">
+            <mat-option value="CRD">CREDITO</mat-option>
+            <mat-option value="CNT">CONTADO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col" appearance="standard">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="P">PENDIENTE</mat-option>
+            <mat-option value="C">PAGADO</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="col" appearance="standard">
+        <mat-label>Adicional</mat-label>
+        <textarea matInput formControlName="aditional"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="submitButtons">
+      <button type="submit" class="sub-btn" mat-raised-button color="primary" >Guardar</button>
+      <a class="sub-btn" mat-raised-button color="warn" (click)="closeForm()">Cancelar</a>
+    </div>
+  </form>
+</div>

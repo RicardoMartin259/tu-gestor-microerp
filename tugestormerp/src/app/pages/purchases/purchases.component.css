@@ -1,0 +1,43 @@
+table {
+  width: 100%;
+}
+
+.th-serie{
+  width: 20%;
+}
+
+.th-name{
+  width: 40%;
+}
+
+.th-amount{
+  width: 10%;
+}
+
+.th-status{
+  width: 8%;
+}
+
+.th-options{
+  width: 5%;
+}
+
+th{
+  margin-right: 3px;
+  background-color: grey;
+  color: whitesmoke;
+}
+
+td{
+  margin-right: 3px;
+}
+
+.opt{
+  cursor: pointer;
+}
+
+.add-btn{
+  border: 1px solid;
+  border-color: gray-300;
+  width: fit-content;
+}

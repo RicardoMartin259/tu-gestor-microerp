@@ -10,11 +10,12 @@ const db = getFirestore(app);
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
+export class PurchaseService {
 
-  private customer: any  = <any>{};
+  private coll = "purchases";
+  private purchase: any  = <any>{};
 
-  private customerObj = new BehaviorSubject<any>(this.customer);
+  private customerObj = new BehaviorSubject<any>(this.purchase);
   custChange = this.customerObj.asObservable();
 
   private _mood= new BehaviorSubject<boolean>(false);
@@ -25,24 +26,22 @@ export class CustomerService {
 
   constructor() { }
 
-  async saveDoc(customer: any){
-    await setDoc(doc(db,"customers",customer.numDoc),customer);
-    this.customer = null;
+  async createDoc(purchase: any){
+    await setDoc(doc(db, this.coll, (purchase.supplierDOI+'-'+purchase.invoiceSerie)), purchase);
+    this.purchase = null;
   }
 
-  async getCustomers(): Promise<any>{
-    //const q = query(collection(db, "customers"), where("tipoDoc","==","6"));
-    const r = query(collection(db, "customers"));
+  async getPurchases(): Promise<any>{
+    const r = query(collection(db, this.coll));
     const querySnapshot = await getDocs(r);
     return querySnapshot;
   }
 
-  async deleteCustomer(cust: string){
-    await deleteDoc(doc(db, "customers", cust));
+  async deletePurchase(invoiceNum: string){
+    await deleteDoc(doc(db, "customers", invoiceNum));
   }
 
-  createCustomer(tipoDoc:string, mood: boolean){
+  createPurchase( mood: boolean){
     this._mood.next(mood);
-    this._custDoc.next(tipoDoc);
   }
 }
