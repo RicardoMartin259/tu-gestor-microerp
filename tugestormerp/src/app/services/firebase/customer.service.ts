@@ -26,7 +26,7 @@ export class CustomerService {
   constructor() { }
 
   async saveDoc(customer: any){
-    await setDoc(doc(db,"customers",customer.numDoc),customer);
+    await setDoc(doc(db, "customers", customer.numDoc), customer);
     this.customer = null;
   }
 

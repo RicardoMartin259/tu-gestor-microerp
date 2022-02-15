@@ -1,0 +1,21 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logo{
+  width: 170px;
+  height: 80%;
+}
+
+.toolbar{
+  background-color: rebeccapurple;
+}
+
+.icon-btn{
+  height: fit-content;
+  width: fit-content;
+}
+
+.navbar{
+  height: fit-content;
+}

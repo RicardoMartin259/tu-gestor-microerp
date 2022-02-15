@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "rikymerp": {
+      "hosting": {
+        "tugestormerp": [
+          "rikymerp"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "rikymerp"
+  }
+}

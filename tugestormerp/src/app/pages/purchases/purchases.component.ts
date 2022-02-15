@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { PurchaseService } from 'src/app/services/firebase/purchase.service';
 import Swal from 'sweetalert2';
 import { PurchaseFormComponent } from './purchase-form/purchase-form.component';

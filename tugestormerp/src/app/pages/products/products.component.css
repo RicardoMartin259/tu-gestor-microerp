@@ -1,0 +1,10 @@
+.mat-new {
+    background-color: green;
+    color: #fff;
+}
+
+.add-btn{
+    border: 1px solid;
+    border-color: gray-300;
+    width: fit-content;
+}
