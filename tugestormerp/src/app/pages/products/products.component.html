@@ -1,49 +1,55 @@
 <div class="m-3">
     <div class="row">
         <div class="col">
-            <mat-card>
-                <div class="row">
-                    <div class="col">
-                        <mat-card-title  class="h3">Lista de Productos</mat-card-title>
-                        <mat-card-subtitle>Resultados</mat-card-subtitle>
-                    </div>
-                    <div class="col-2 text-end">
-                        <button mat-raised-button color="primary" class="add-btn">
-                            Nuevo
-                        </button>
-                    </div>
-                </div>
-            </mat-card>
+          <div class="row">
+              <div class="col">
+                  <mat-card-title  class="h2">PRODUCTOS</mat-card-title>
+              </div>
+              <div class="col-4 text-end">
+                  <button mat-raised-button color="primary" class="add-btn" (click)="createForm()">
+                      Nuevo Producto
+                  </button>
+              </div>
+          </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <mat-card class="mt-2" *ngFor="let product of products">
-                <mat-card-title>Actions Buttons</mat-card-title>
-                <mat-card-subtitle>End</mat-card-subtitle>
-                <mat-card-actions align="end">
-                  <button mat-raised-button class="btn btn-sm btn-warning" (click)="updateProduct('customer')">
-                    <i class="fas fa-edit text-dark"></i>
+            <div class="card m-1" *ngFor="let product of products">
+              <div class="row card-body">
+                <div class="col-8">
+                  <h2>{{product.desc}}</h2>
+                  <span>{{product.prodID}}</span>
+                </div>
+                <div class="col-4 text-end">
+                  <button class="btn btn-sm" (click)="updateProduct('customer')">
+                    <i class="fas fa-expand-alt"></i>
                   </button>
-                  <button mat-raised-button class="btn btn-light" (click)="deleteProduct('id')">
-                    <i class="fas fa-trash text-danger"></i>
-                  </button>
-                </mat-card-actions>
-              </mat-card>
+                </div>
+              </div>
+            </div>
         </div>
-        <div class="col-4">
-            <mat-card class="mt-2">
-                <mat-card-title>Descripción del Producto</mat-card-title>
+        <div class="col-5">
+            <div class="card m-1">
+              <div class="row card-body">
+                <div class="col">
+                  <mat-card-title>Detalles del Producto</mat-card-title>
+                </div>
+                <div class="col text-end">
+                  <mat-card-actions align="end">
+                    <button class="btn btn-sm" (click)="updateProduct('customer')">
+                      <i class="fas fa-edit text-dark"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteProduct('id')">
+                      <i class="fas fa-trash text-light"></i>
+                    </button>
+                  </mat-card-actions>
+                </div>
+              </div>
+              <div class="card-body">
                 <mat-card-subtitle>Subtitulo</mat-card-subtitle>
-                <mat-card-actions align="end">
-                  <button mat-raised-button class="btn btn-sm btn-warning" (click)="updateProduct('customer')">
-                    <i class="fas fa-edit text-dark"></i>
-                  </button>
-                  <button mat-raised-button class="btn btn-light" (click)="deleteProduct('id')">
-                    <i class="fas fa-trash text-danger"></i>
-                  </button>
-                </mat-card-actions>
-              </mat-card>
+              </div>
+            </div>
         </div>
     </div>
 </div>

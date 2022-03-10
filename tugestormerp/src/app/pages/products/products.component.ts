@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from 'src/app/services/firebase/product.service';
 import Swal from 'sweetalert2';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 @Component({
   selector: 'app-products',
@@ -9,31 +12,35 @@ import Swal from 'sweetalert2';
 })
 export class ProductsComponent implements OnInit {
 
-  products: any[] = [
-    {id:'123', desc:'prod 1', messure: 'balde'},
-    {id:'113', desc:'prod 2', messure: 'unidad'},
-    {id:'133', desc:'prod 3', messure: 'litro'},
-    {id:'122', desc:'prod 4', messure: 'us galon'},
-  ];
+  products: any [] = [];
+  prod: any = {};
 
-  prods: any [] = [];
-
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
-    this.readProducts();
+    this.getProducts();
   }
 
   createForm(){
-
+    const dialogConf = new MatDialogConfig();
+    dialogConf.disableClose = true;
+    dialogConf.autoFocus = true;
+    dialogConf.width = "55%";
+    this.dialog.open(ProductFormComponent, dialogConf);
   }
 
-  readProducts(){
-    let prods = this.productService.getProducts().then(element=>{
-      console.log("llega");
-      console.log(element);
+  getProducts(){
+    var prodsList: any = [];
+    this.productService.getProducts().subscribe(data=>{
+      this.products = [];
+      data.forEach((element: any) => {
+        this.products.push(element);
+      });
     });
-    console.log(prods);
+    
   }
 
   updateProduct(product: any){
@@ -43,10 +50,28 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  deleteProduct(prodID: string){
+  deleteProduct(prod: any){
     Swal.fire({
-      icon: 'success',
-      title: '¡El producto ha sido eliminado!',
+      title: '¿Está seguro?',
+      text: "No podrá recuperar los datos del producto una vez eliminado.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, borrar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        //Call disable function from productService
+        this.disableProduct(prod);
+        Swal.fire({
+          icon: 'success',
+          title: '¡El producto ha sido eliminado!',
+        });
+      }
     });
-  }  
+  }
+
+  disableProduct(prod: any){
+    prod.status = "C";
+    console.log(prod);
+    this.productService.disableProduct(prod);
+  }
 }

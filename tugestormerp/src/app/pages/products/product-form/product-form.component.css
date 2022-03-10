@@ -1,0 +1,13 @@
+.submitButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.sub-btn{
+    /*border: 1px solid;*/
+    border-color: gray-300;
+    margin: 0 7.5%;
+    width: 25%;
+}

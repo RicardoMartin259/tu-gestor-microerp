@@ -1,1 +1,55 @@
-<p>product-form works!</p>
+
+<div class="container">
+    <form [formGroup]="productform" (ngSubmit)="saveProduct()" autocomplete="off">
+      <div >
+        <h1>DATOS DEL PRODUCTO</h1>
+      </div>
+      <div class="col">
+        <div class="row">
+          <mat-form-field class="col-4" appearance="standard">
+            <mat-label>TIPO</mat-label>
+            <mat-select formControlName="prodType">
+              <mat-option value="1">Bien</mat-option>
+              <mat-option value="2">Servicio</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col-4" appearance="standard">
+            <mat-label>UNIDAD MEDIDA</mat-label>
+            <mat-select formControlName="messureUnd">
+              <mat-option *ngFor="let messure of messures" [value]="messure.value">
+                {{messure.desc}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col-4" appearance="standard">
+            <mat-label>ID PRODUCTO</mat-label>
+            <input  matInput formControlName="prodID">
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="standard">
+            <mat-label>DESCRIPCION</mat-label>
+            <textarea matInput formControlName="desc"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-4" appearance="standard">
+          <mat-label>PRECIO VENTA</mat-label>
+          <input type="number" matInput formControlName="salePrc">
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="standard">
+          <mat-label>IGV %</mat-label>
+          <input type="number" matInput formControlName="igv">
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="standard">
+          <mat-label>PRECIO COMPRA</mat-label>
+          <input type="number" matInput formControlName="purchasePrc">
+        </mat-form-field>
+      </div>
+      <div class="submitButtons">
+        <button type="submit" class="sub-btn" mat-raised-button color="primary" [disabled]="productform.invalid">Guardar</button>
+        <a class="sub-btn" mat-raised-button color="warn" (click)="closeForm()">Cancelar</a>
+      </div>
+    </form>
+</div>
