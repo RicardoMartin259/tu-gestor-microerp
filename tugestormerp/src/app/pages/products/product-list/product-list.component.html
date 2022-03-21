@@ -1,0 +1,15 @@
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div class="card m-1" *cdkVirtualFor="let product of products">
+    <div class="row card-body">
+      <div class="col-8">
+        <h2>{{product.desc}}</h2>
+        <span>{{product.prodID}}</span>
+      </div>
+      <div class="col-4 text-end">
+        <button class="btn btn-sm" (click)="showProductDetails(product)">
+          <i class="fas fa-expand-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</cdk-virtual-scroll-viewport>  

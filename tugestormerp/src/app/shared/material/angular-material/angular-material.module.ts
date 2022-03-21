@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -39,7 +40,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ScrollingModule
   ],
   exports: [
     MatFormFieldModule,
@@ -57,7 +59,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ScrollingModule
   ]
 })
 export class AngularMaterialModule { }

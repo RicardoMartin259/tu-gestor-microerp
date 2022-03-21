@@ -1,0 +1,23 @@
+<div class="card m-1" *ngIf="!productEmpty()">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+            <h2>{{product.desc}}</h2>
+        </div>
+        <div class="col-3 text-end">
+            <button class="btn btn-sm">
+                <i class="fas fa-edit text-dark" (click)="updateProduct(product)"></i>
+            </button>
+            <button class="btn btn-sm" (click)="deleteProduct(product)">
+                <i class="fas fa-trash text-danger"></i>
+            </button>
+        </div>
+      </div>
+      <div class="row">
+        <span>Precio de Venta: S/ {{product.salePrc}}</span>
+      </div>
+      <div class="row">
+        <span>Unidad de medida: {{product.messureUnd}}</span>
+      </div>
+    </div>
+  </div>

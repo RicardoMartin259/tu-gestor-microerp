@@ -18,6 +18,7 @@ export class ProductFormComponent implements OnInit {
   messures: any = [];
   //product: any = {};
   product: {[k: string]: any} = {};
+  private mode: boolean = false;
   
   constructor(
     private productService: ProductService,
@@ -49,9 +50,24 @@ export class ProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkFormMode();
+  }
+
+  checkFormMode(){
+    this.productService._modeChange.subscribe(mode=>{
+      console.log(mode);
+    });
   }
 
   saveProduct(){
+    if(this.mode){
+      this.createProduct();
+    }else{
+      this.updateProduct();
+    }
+  }
+
+  createProduct(){
     this.product = this.productform.value;
     this.product.status = "A";
     let id = "";
@@ -61,7 +77,20 @@ export class ProductFormComponent implements OnInit {
         this.showAlertSuccess();
       }
     });
-    
+    this.closeForm();
+  }
+
+  updateProduct(){
+    this.product = this.productform.value;
+    this.product.status = "A";
+    let id = "";
+    this.productService.updateProduct(this.product).then(data => {
+      console.log(data);
+      /*id = data.id;
+      if(id.length != 0){
+        this.showAlertSuccess();
+      }*/
+    });
     this.closeForm();
   }
 

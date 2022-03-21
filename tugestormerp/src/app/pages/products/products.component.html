@@ -14,7 +14,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col mb-2">
+          <app-product-list></app-product-list>
+          <!--
             <div class="card m-1" *ngFor="let product of products">
               <div class="row card-body">
                 <div class="col-8">
@@ -22,14 +24,16 @@
                   <span>{{product.prodID}}</span>
                 </div>
                 <div class="col-4 text-end">
-                  <button class="btn btn-sm" (click)="updateProduct('customer')">
+                  <button class="btn btn-sm" (click)="showProductDetails(product)">
                     <i class="fas fa-expand-alt"></i>
                   </button>
                 </div>
               </div>
             </div>
+            -->
         </div>
-        <div class="col-5">
+        <div class="col-5 mb-2">
+          <!--
             <div class="card m-1">
               <div class="row card-body">
                 <div class="col">
@@ -47,9 +51,11 @@
                 </div>
               </div>
               <div class="card-body">
-                <mat-card-subtitle>Subtitulo</mat-card-subtitle>
+                <span>Unidad de medida: {{product.messureUnd}}</span>
               </div>
             </div>
+            -->
+          <app-product-details></app-product-details>
         </div>
     </div>
 </div>
